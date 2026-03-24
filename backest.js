@@ -38,12 +38,15 @@ function animateBall() {
     yPos += ySpd;
 
     ball.style.translate = `${xPos}px ${yPos}px`;
-    if (!stop){
+    if (animate){
     requestAnimationFrame(animateBall);
     }
 }
 function stopBall() {
-    stop = true;
+    animate = !animate;
+    if (animate) {
+        animateBall();
+    }
 }
 function down() {
     pMouseX = mouseX;
@@ -67,7 +70,7 @@ const button = document.getElementById("myButton");
 const buttonStyle = window.getComputedStyle(button);
 button.addEventListener("click", counter);
 
-let stop = false;
+let animate = true;
 const stopper = document.getElementById("stopper");
 stopper.addEventListener("click", stopBall)
 
